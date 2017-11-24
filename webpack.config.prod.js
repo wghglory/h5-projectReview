@@ -15,7 +15,8 @@ const config = {
     extensions: ['*', '.js', '.jsx', '.json']
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
-  entry: path.resolve(__dirname, 'src/index'),
+  // babel-polyfill: Uncaught ReferenceError: regeneratorRuntime is not defined
+  entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -96,7 +97,7 @@ const config = {
             options: {
               limit: 10000,
               mimetype: 'application/octet-stream',
-              name: '[name].[ext]'
+              name: 'assets/img/[name].[ext]'
             }
           }
         ]

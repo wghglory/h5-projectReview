@@ -1,6 +1,6 @@
 @import "globals";
 
-.reviewStatus {
+.reviewNav {
   padding: 14px 0;
   a {
     display: inline-block;
@@ -29,9 +29,7 @@
 
 .projectList ul {
   padding: 0 14px;
-  &.reviewedUl {
-    display: none;
-  }
+
   li {
     background: white;
     box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.16);
