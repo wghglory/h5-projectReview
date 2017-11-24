@@ -51,14 +51,14 @@
     right: 0;
   }
 
-  :global(#username ~ .icon-guanbi) {
+  :global(.username ~ .icon-guanbi) {
     right: 0 !important;
   }
-  :global(#password ~ .icon-guanbi) {
+  :global(.password ~ .icon-guanbi) {
     right: 40px !important;
   }
-  :global(#password ~ .icon-mima-yanjing-guanbi),
-  :global(#password ~ .icon-xianshimima1) {
+  :global(.password ~ .icon-mima-yanjing-guanbi),
+  :global(.password ~ .icon-xianshimima1) {
     right: 0;
   }
   .submit {

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './Login';
 // import Nav from './Nav';
-import Home from './Home';
+import Project from './Project';
 import About from './About';
 
 export default class App extends Component {
@@ -12,7 +12,7 @@ export default class App extends Component {
       <BrowserRouter>
         {/* <Nav /> */}
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Project} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
           <Route render={() => <p>Not found</p>} />

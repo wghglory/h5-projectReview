@@ -72,12 +72,18 @@ export default class Login extends Component {
         </header>
         <form className={`${css.loginForm} flexbox-vertical`} ref={(ele) => (this.loginForm = ele)}>
           <div>
-            <input id="username" type="text" value={this.state.username} placeholder="账户" onChange={this.setUsername} />
+            <input
+              className="username"
+              type="text"
+              value={this.state.username}
+              placeholder="用户名"
+              onChange={this.setUsername}
+            />
             <i className="iconfont icon-guanbi" onTouchStart={this.clearUsername} />
           </div>
           <div>
             <input
-              id="password"
+              className="password"
               type={this.state.showPassword ? `text` : `password`}
               value={this.state.password}
               placeholder="密码"
@@ -85,15 +91,13 @@ export default class Login extends Component {
             />
             <i className="iconfont icon-guanbi" onTouchStart={this.clearPassword} />
             <i
-              id="eye"
-              className={`iconfont ${this.state.showPassword ? 'icon-xianshimima1' : 'icon-mima-yanjing-guanbi'}`}
+              className={`eye iconfont ${this.state.showPassword ? 'icon-xianshimima1' : 'icon-mima-yanjing-guanbi'}`}
               onTouchStart={this.togglePassword}
             />
           </div>
           <div>
             <a
-              id="submit"
-              className={`${css.submit} ${this.state.username !== '' && this.state.password !== ''
+              className={`submit ${css.submit} ${this.state.username !== '' && this.state.password !== ''
                 ? `green`
                 : `gray`} `}
               onTouchStart={this.tryLogin}
