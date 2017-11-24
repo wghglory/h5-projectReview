@@ -1,0 +1,11 @@
+{
+    "presets": [
+        "env",
+        "react"
+    ],
+    "plugins": [
+        "transform-object-rest-spread",
+        "transform-class-properties"
+        // ["import", { "libraryName": "antd", "style": true }] //antd 按需加载(babel-plugin-import) import js and css modularly (LESS/Sass source files)
+    ]
+}
