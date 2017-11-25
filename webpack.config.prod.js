@@ -108,7 +108,7 @@ const config = {
             options: {
               limit: 10000,
               mimetype: 'application/octet-stream',
-              name: 'assets/img/[name].[ext]'
+              name: '[name].[ext]'
             }
           }
         ]
@@ -132,7 +132,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]'
+              name: 'assets/img/[name].[ext]'
             }
           }
         ]
