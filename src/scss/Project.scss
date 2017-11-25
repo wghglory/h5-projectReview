@@ -97,27 +97,25 @@
 }
 
 .toReport {
-  position: fixed;
   background: #efeff3;
   height: px2rem(60);
   width: 100%;
-  left: px2rem(0);
-  text-align: center;
   font-size: px2rem(16);
   color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   a {
-    position: absolute;
     border-radius: 4px;
-    display: inline-block;
     width: calcPX(100%, 16);
+    text-align: center;
     height: px2rem(46);
     line-height: px2rem(46);
     background: #00c993;
-    left: px2rem(8);
-    top: px2rem(8);
     font-size: px2rem(16);
     box-shadow: 0 2px 9px rgba(90, 86, 108, .23);
+    letter-spacing: px2rem(4);
   }
 }
 

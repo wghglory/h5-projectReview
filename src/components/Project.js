@@ -24,11 +24,15 @@ export default class Project extends PureComponent {
 
   togglePlay = () => {
     if (this.state.playing) {
-      this.setState({
-        playing: false
-      });
-      this.audio.pause();
-      clearInterval(this.timer);
+      this.setState(
+        {
+          playing: false
+        },
+        () => {
+          this.audio.pause();
+          clearInterval(this.timer);
+        }
+      );
     } else {
       this.setState({
         playing: true
@@ -49,7 +53,7 @@ export default class Project extends PureComponent {
   render() {
     return (
       <div className="container">
-        <div className={classNames(css.wrapper)}>
+        <section className={classNames(css.wrapper)}>
           <div className={classNames(css.mediaTools)}>
             <audio controls ref={(ele) => (this.audio = ele)}>
               <source src={require('../assets/music.mp3')} type="audio/mpeg" />
@@ -58,14 +62,14 @@ export default class Project extends PureComponent {
               className={classNames({ [css.playerBtn]: true, [css.play]: !this.state.playing })}
               onTouchStart={this.togglePlay}
             />
-            <span className={`${css.currentTime}`}>{this.audio ? formatTime(this.audio.currentTime) : `00:00`}</span>
-            <span className={`${css.duration}`}>{this.audio ? formatTime(this.audio.duration) : `00:00`}</span>
-            <div className={`${css.mediaProgress}`}>
-              <div className={`${css.playProgress}`} style={{ width: this.state.playProgress }} />
+            <span className={css.currentTime}>{this.audio ? formatTime(this.audio.currentTime) : `00:00`}</span>
+            <span className={css.duration}>{this.audio ? formatTime(this.audio.duration) : `00:00`}</span>
+            <div className={css.mediaProgress}>
+              <div className={css.playProgress} style={{ width: this.state.playProgress }} />
             </div>
           </div>
-          <div className={`${css.project}`}>
-            <h3 className={`${css.projectImg}`}>自省</h3>
+          <div className={css.project}>
+            <h3 className={css.projectImg}>自省</h3>
             <div>每天自省，虚心学习，广交善缘，问心无愧</div>
             <div>每天自省，虚心学习，广交善缘，问心无愧</div>
             <div>每天自省，虚心学习，广交善缘，问心无愧</div>
@@ -73,15 +77,15 @@ export default class Project extends PureComponent {
             <p>{this.state.project.name}</p>
             <img src={require('../assets/img/default-post.jpg')} />
           </div>
-        </div>
-        <div className={`${css.toReport}`}>
+        </section>
+        <section className={css.toReport}>
           <a
-            className={`${css.toReportBtn}`}
-            onTouchStart={() => this.props.history.push(`/reviews/${this.props.match.params.id}`)}
+            className={css.toReportBtn}
+            onTouchStart={() => this.props.history.push(`/reviews?projectId=${this.props.match.params.id}`)}
           >
             去评分
           </a>
-        </div>
+        </section>
       </div>
     );
   }
