@@ -15,8 +15,16 @@ const config = {
     extensions: ['*', '.js', '.jsx', '.json']
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
-  // babel-polyfill: Uncaught ReferenceError: regeneratorRuntime is not defined
-  entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
+  entry: {
+    // must be first entry to properly set public path
+    // './src/webpack-public-path',
+    // 'react-hot-loader/patch',
+    // 'webpack-hot-middleware/client?reload=true',
+    // babel-polyfill: Uncaught ReferenceError: regeneratorRuntime is not defined
+    vendor: ['babel-polyfill', 'react', 'react-dom', 'prop-types', 'axios'],
+    app: [path.resolve(__dirname, 'src/index.js')]
+    // Defining path seems necessary for this to work consistently on Windows machines.
+  },
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -53,6 +61,9 @@ const config = {
       // Note that you can add custom options here if you need to handle other custom logic in index.html
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
       trackJSToken: ''
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
     }),
 
     // Minify JS
