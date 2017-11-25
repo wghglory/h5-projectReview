@@ -1,117 +1,93 @@
 import css from '../scss/Project.scss';
-import React, { Component } from 'react';
-import { baseUrl } from '../utils/api';
+import React, { PureComponent } from 'react';
+import { baseUrl, formatTime } from '../utils/api';
+import classNames from 'classnames';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
-export default class Project extends Component {
+export default class Project extends PureComponent {
   state = {
-    reviewedProjects: [],
-    unReviewedProjects: [],
-    showReviewed: false
+    project: {},
+    playing: false,
+    playProgress: 0
   };
 
-  async componentDidMount() {
-    const projects = await this.fetchData();
-    this.fillProjects(projects);
-  }
-
-  async fetchData() {
-    const res = await fetch(`${baseUrl}/projects`, {
-      method: 'get',
-      mode: 'cors'
-    });
-
-    return res.json();
-  }
-
-  fillProjects(projects) {
-    let reviewedProjects = [];
-    let unReviewedProjects = [];
-
-    projects.forEach((p) => {
-      if (p.reviewed) {
-        reviewedProjects.push(p);
-      } else {
-        unReviewedProjects.push(p);
-      }
-    });
-    this.setState({ reviewedProjects, unReviewedProjects });
-  }
-
-  /*
   componentDidMount() {
-    this.fetchData().then((res) => {
-      this.fillProjects(res);
+    axios.get(`${baseUrl}/projects/${this.props.match.params.id}`).then((res) => {
+      this.setState({
+        project: res.data.project
+      });
     });
   }
 
-  fetchData() {
-    return fetch(`${baseUrl}/projects`, {
-      method: 'get',
-      mode: 'cors'
-    }).then((res) => {
-      return res.json();
-    });
+  timer = null;
+
+  togglePlay = () => {
+    if (this.state.playing) {
+      this.setState({
+        playing: false
+      });
+      this.audio.pause();
+      clearInterval(this.timer);
+    } else {
+      this.setState({
+        playing: true
+      });
+      this.timer = setInterval(() => {
+        this.setState({
+          playProgress: this.audio.currentTime / this.audio.duration * 100 + '%'
+        });
+      }, 1000);
+      this.audio.play();
+    }
+  };
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
-
-  fillProjects(projects) {
-    this.setState({ projects });
-  } */
-
-  showUnReviewed = () => {
-    this.setState({
-      showReviewed: false
-    });
-  };
-
-  showReviewed = () => {
-    this.setState({
-      showReviewed: true
-    });
-  };
 
   render() {
     return (
-      <div className="container gray">
-        <nav className={`${css.reviewNav} flexbox`}>
-          <a className={this.state.showReviewed ? '' : css.active} onTouchStart={this.showUnReviewed}>
-            未批阅
+      <div className="container">
+        <div className={classNames(css.wrapper)}>
+          <div className={classNames(css.mediaTools)}>
+            <audio controls ref={(ele) => (this.audio = ele)}>
+              <source src={require('../assets/music.mp3')} type="audio/mpeg" />
+            </audio>
+            <div
+              className={classNames({ [css.playerBtn]: true, [css.play]: !this.state.playing })}
+              onTouchStart={this.togglePlay}
+            />
+            <span className={`${css.currentTime}`}>{this.audio ? formatTime(this.audio.currentTime) : `00:00`}</span>
+            <span className={`${css.duration}`}>{this.audio ? formatTime(this.audio.duration) : `00:00`}</span>
+            <div className={`${css.mediaProgress}`}>
+              <div className={`${css.playProgress}`} style={{ width: this.state.playProgress }} />
+            </div>
+          </div>
+          <div className={`${css.project}`}>
+            <h3 className={`${css.projectImg}`}>自省</h3>
+            <div>每天自省，虚心学习，广交善缘，问心无愧</div>
+            <div>每天自省，虚心学习，广交善缘，问心无愧</div>
+            <div>每天自省，虚心学习，广交善缘，问心无愧</div>
+            <label>Project Name</label>
+            <p>{this.state.project.name}</p>
+            <img src={require('../assets/img/default-post.jpg')} />
+          </div>
+        </div>
+        <div className={`${css.toReport}`}>
+          <a
+            className={`${css.toReportBtn}`}
+            onTouchStart={() => this.props.history.push(`/reviews/${this.props.match.params.id}`)}
+          >
+            去评分
           </a>
-          <a className={this.state.showReviewed ? css.active : ''} onTouchStart={this.showReviewed}>
-            已批阅
-          </a>
-        </nav>
-        <section className={`${css.projectList}`}>
-          {/* 两个 ul 可以封装到一个组件中，这里不作处理了 */}
-          <ul className={`${this.state.showReviewed ? 'hide' : ''}`}>
-            {this.state.unReviewedProjects.map((p, index) => (
-              <li key={index}>
-                <span
-                  style={{
-                    background: `url(${require('../assets/img/' + (index % 5 + 1) + '@2x.png')}) no-repeat center`,
-                    backgroundSize: `contain`
-                  }}
-                />
-                <span>{p.name}</span>
-                <span className="icon-zhankai iconfont" />
-              </li>
-            ))}
-          </ul>
-          <ul className={`${this.state.showReviewed ? '' : 'hide'}`}>
-            {this.state.reviewedProjects.map((p, index) => (
-              <li key={index}>
-                <span
-                  style={{
-                    background: `url(${require('../assets/img/' + (index % 5 + 1) + '@2x.png')}) no-repeat center`,
-                    backgroundSize: `contain`
-                  }}
-                />
-                <span>{p.name}</span>
-                <span className="icon-zhankai iconfont" />
-              </li>
-            ))}
-          </ul>
-        </section>
+        </div>
       </div>
     );
   }
 }
+
+Project.propTypes = {
+  match: PropTypes.object,
+  history: PropTypes.object
+};

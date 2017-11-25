@@ -127,6 +127,17 @@ const config = {
         ]
       },
       {
+        test: /\.(mp3)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
         test: /(\.css|\.scss|\.sass)$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
