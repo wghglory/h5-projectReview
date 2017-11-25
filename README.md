@@ -1,11 +1,9 @@
-# React Boilerplate
-
-Support css modules
+# React h5 demo
 
 ## Running Project
 
 ```bash
-npm install
+yarn
 npm start
 ```
 
