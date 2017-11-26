@@ -1,0 +1,218 @@
+.review-score {
+  font-size: 1.125rem;
+  text-align: center;
+  padding-top: 1.25rem;
+  padding-bottom: 0.5rem; }
+  .review-score span {
+    font-weight: 300;
+    font-size: 2.25rem;
+    margin-right: 0.5rem; }
+
+.review-scroll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2.5rem;
+  line-height: 2.5rem; }
+  .review-scroll div:nth-of-type(2n-1) {
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    text-align: center; }
+  .review-scroll div span {
+    color: white;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    display: inline-block;
+    text-align: center;
+    background-color: #00c993;
+    border-radius: 4px; }
+  .review-scroll .review-scorebar {
+    position: relative;
+    -webkit-box-flex: 6;
+        -ms-flex: 6;
+            flex: 6;
+    background-color: #eee;
+    border-radius: 4px; }
+    .review-scroll .review-scorebar .review-scorebar-current {
+      position: absolute;
+      width: 50%;
+      height: 2.5rem;
+      background-color: #00c993;
+      border-radius: 4px;
+      -webkit-box-shadow: 2px 0px 1px 0 #00c993;
+              box-shadow: 2px 0px 1px 0 #00c993; }
+
+.review-list {
+  background: white; }
+  .review-list h3 {
+    background: #fafafa;
+    letter-spacing: 4px;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 2.25rem 0 0.625rem; }
+  .review-list .review-item {
+    border-top: 1px solid #eee; }
+    .review-list .review-item:last-of-type {
+      border-bottom: 1px solid #eee;
+      -webkit-box-shadow: 5px 5px 10px #eee;
+              box-shadow: 5px 5px 10px #eee; }
+    .review-list .review-item .review-item-header {
+      color: #8a8b97;
+      font-size: 1.125rem;
+      font-weight: 200;
+      text-align: center;
+      height: 2.75rem;
+      line-height: 2.75rem;
+      letter-spacing: 4px; }
+      .review-list .review-item .review-item-header.active {
+        color: #252525; }
+      .review-list .review-item .review-item-header.valueMoreThanOne {
+        color: #252525; }
+        .review-list .review-item .review-item-header.valueMoreThanOne .iconfont {
+          display: inline-block; }
+      .review-list .review-item .review-item-header .iconfont {
+        display: none;
+        color: #00c993; }
+    .review-list .review-item ul {
+      border-top: 1px solid #eee;
+      display: none; }
+      .review-list .review-item ul.show {
+        display: block; }
+      .review-list .review-item ul li {
+        padding: 0 20px;
+        margin: 10px 0;
+        color: #b7b8c4; }
+        .review-list .review-item ul li.active span {
+          color: #00c993; }
+        .review-list .review-item ul li.active a {
+          color: #5a566c; }
+        .review-list .review-item ul li span {
+          font-size: 1rem;
+          vertical-align: middle;
+          padding-right: 8px; }
+        .review-list .review-item ul li a {
+          color: inherit;
+          font-size: 0.875rem; }
+
+.comment {
+  background: #fafafa; }
+  .comment h3 {
+    letter-spacing: 4px;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 2.25rem 0 0.625rem; }
+  .comment .review-area {
+    width: 100%;
+    height: 12.5rem;
+    border: none;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 0.75rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-size: 0.75rem;
+    color: #666; }
+  .comment .review-area::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #a4a7c0;
+    font-size: 0.75rem;
+    font-weight: 200;
+    letter-spacing: 2px; }
+  .comment .review-area:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #a4a7c0;
+    font-size: 0.75rem;
+    font-weight: 200;
+    letter-spacing: 2px; }
+  .comment .review-area::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #a4a7c0;
+    font-size: 0.75rem;
+    font-weight: 200;
+    letter-spacing: 2px; }
+  .comment .review-area:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #a4a7c0;
+    font-size: 0.75rem;
+    font-weight: 200;
+    letter-spacing: 2px; }
+
+.review-footer {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  padding: 0.375rem 0;
+  background: #efeff3; }
+  .review-footer .review-submit {
+    width: 22.5rem;
+    height: inherit;
+    line-height: inherit;
+    color: white;
+    background-color: #00c993;
+    font-size: 1rem;
+    letter-spacing: 0.25rem;
+    display: inline-block;
+    -webkit-box-shadow: 0 2px 9px rgba(90, 86, 108, 0.23);
+            box-shadow: 0 2px 9px rgba(90, 86, 108, 0.23); }
+
+body.modal-open {
+  position: fixed;
+  width: 100%; }
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.3); }
+  .modal .modal-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 16.5rem;
+    background: white;
+    border-radius: 4px; }
+    .modal .modal-center .iconfont {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 20px; }
+    .modal .modal-center h4 {
+      text-align: center;
+      padding: 2.375rem 0 0.375rem;
+      font-weight: 400;
+      font-size: 0.875rem; }
+    .modal .modal-center p {
+      text-align: center;
+      font-weight: 200;
+      padding-bottom: 2.5rem;
+      font-size: 0.75rem; }
+    .modal .modal-center .buttons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+    .modal .modal-center a {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      letter-spacing: 4px;
+      font-size: 0.875rem;
+      height: 2.75rem;
+      line-height: 2.75rem;
+      background: white;
+      border-top: 1px solid #eee;
+      text-align: center; }
+      .modal .modal-center a.confirm {
+        color: white;
+        border-top-color: #00c993;
+        background: #00c993; }

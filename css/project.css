@@ -1,0 +1,101 @@
+main {
+  padding: 0 0.9375rem;
+  padding-top: 2.8125rem;
+  height: calc(100% - 3.75rem);
+  overflow-y: auto; }
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0; }
+
+main,
+div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+.media-tools {
+  position: relative;
+  height: 6.25rem; }
+
+.player-btn {
+  position: absolute;
+  width: 3.125rem;
+  height: 3.125rem;
+  top: 1.5625rem;
+  left: 0;
+  background-image: url("../img/pause.png");
+  background-size: contain; }
+
+.play {
+  background-image: url("../img/play.png"); }
+
+.media-progress {
+  position: absolute;
+  top: 2.96875rem;
+  left: 5.8125rem; }
+
+.media-progress {
+  background: #eef0f2;
+  height: 4px;
+  width: 12.5rem;
+  position: absolute; }
+
+.play-progress {
+  width: 0;
+  background: #00c993;
+  height: 100%; }
+
+.start-time,
+.all-time {
+  font-size: 12px;
+  color: grey;
+  position: absolute; }
+
+.start-time {
+  left: 3.4375rem;
+  top: 2.625rem; }
+
+.all-time {
+  left: 18.75rem;
+  top: 2.625rem; }
+
+.ppt-img-list {
+  margin-top: 8px;
+  padding-bottom: 6.25rem;
+  height: calc(100% - 2.8125rem); }
+
+.ppt-img-list .img-item {
+  height: 12.0625rem;
+  margin: 1.125rem 0;
+  -webkit-box-shadow: 0 2px 7px rgba(152, 172, 167, 0.47);
+          box-shadow: 0 2px 7px rgba(152, 172, 167, 0.47); }
+  .ppt-img-list .img-item img {
+    height: 100%;
+    width: 100%; }
+
+.to-report {
+  position: fixed;
+  background: #efeff3;
+  height: 3.75rem;
+  width: 100%;
+  left: 0rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #ffffff; }
+  .to-report a {
+    position: absolute;
+    border-radius: 4px;
+    display: inline-block;
+    width: calc(100% - 1rem);
+    height: 2.875rem;
+    line-height: 2.875rem;
+    background: #00c993;
+    left: 0.5rem;
+    top: 0.5rem;
+    font-size: 1rem;
+    -webkit-box-shadow: 0 2px 9px rgba(90, 86, 108, 0.23);
+            box-shadow: 0 2px 9px rgba(90, 86, 108, 0.23); }
+
+#audio {
+  display: none; }

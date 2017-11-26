@@ -1,0 +1,83 @@
+.login-container {
+  background: url("../img/login-background.jpg") no-repeat;
+  background-size: cover; }
+
+.logo {
+  height: 30%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  color: #00c993; }
+  .logo .icon-jianchuanglogo {
+    font-size: 3.125rem;
+    padding: 10px 0; }
+  .logo h3 {
+    font-size: 0.875rem;
+    font-weight: 200;
+    letter-spacing: 4px; }
+
+.login-form {
+  height: 64%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 3.75rem; }
+
+.login-form div {
+  border-bottom: 1px solid #d5d5d5;
+  width: 80%;
+  font-size: 1rem;
+  padding: 20px 0 12px;
+  position: relative; }
+  .login-form div:last-of-type {
+    border-bottom: none;
+    padding-top: 32px; }
+  .login-form div input {
+    border: none;
+    width: 70%;
+    background: transparent; }
+  .login-form div .iconfont {
+    position: absolute;
+    color: #a4a7c0;
+    right: 0; }
+  .login-form div #username ~ .icon-guanbi {
+    right: 0; }
+  .login-form div #password ~ .icon-guanbi {
+    right: 40px; }
+  .login-form div #password ~ .icon-mima-yanjing-guanbi,
+  .login-form div #password ~ .icon-xianshimima1 {
+    right: 0; }
+  .login-form div .submit {
+    letter-spacing: 4px;
+    width: 100%;
+    padding: 10px 0;
+    color: white;
+    border: none;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: block;
+    text-align: center; }
+    .login-form div .submit.gray {
+      background: #d3d4dc; }
+    .login-form div .submit.green {
+      background: #00c993; }
+
+footer {
+  height: 6%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #a4a7c0;
+  letter-spacing: 4px;
+  font-weight: 200; }

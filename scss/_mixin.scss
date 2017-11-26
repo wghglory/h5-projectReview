@@ -1,0 +1,16 @@
+//基础font-size
+$font: 16;
+//设计稿宽度
+$screen: 375;
+@function px2rem($n) {
+  @return #{$n/($screen*$font/375)}rem;
+}
+
+@function calcPX($m,$n) {
+  @return calc(#{$m} - #{$n/($screen*$font/375)}rem);
+}
+
+$backgroundGray: rgb(250, 250, 250);
+$mainGreen: #00c993;
+$borderGray: #eee;
+$lightGray: #a4a7c0;

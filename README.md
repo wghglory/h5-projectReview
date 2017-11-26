@@ -1,10 +1,15 @@
-# React h5 demo
+# project Review traditional frontend using zepto
 
-## Running Project
+## 项目启动
 
 ```bash
 yarn
-npm start
+yarn start  # 使用 serve 启动服务器
 ```
 
-Username: test, Password: test
+## 项目概述
+
+* 多页面应用
+* scss 通过 gulp 编译出 css
+* 支持移动端，rem 解决方案
+* 每个页面对应的 scss 和 js 文件名称一致

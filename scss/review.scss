@@ -1,0 +1,251 @@
+@import "mixin";
+
+.review-score {
+  font-size: px2rem(18);
+  text-align: center;
+  padding-top: px2rem(20);
+  padding-bottom: px2rem(8);
+  span {
+    font-weight: 300;
+    font-size: px2rem(36);
+    margin-right: px2rem(8);
+  }
+}
+
+.review-scroll {
+  display: flex;
+  height: px2rem(40);
+  line-height: px2rem(40);
+
+  div:nth-of-type(2n-1) {
+    flex: 2;
+    text-align: center;
+  }
+
+  div span {
+    color: white;
+    box-sizing: border-box;
+    width: px2rem(40);
+    line-height: px2rem(40);
+    display: inline-block;
+    text-align: center;
+    background-color: $mainGreen;
+    border-radius: 4px;
+    // box-shadow: 0px 2px 9px 0 rgba(0, 201, 147, 50);
+  }
+
+  .review-scorebar {
+    position: relative;
+    flex: 6;
+    background-color: $borderGray;
+    border-radius: 4px;
+    .review-scorebar-current {
+      position: absolute;
+      width: 50%;
+      height: px2rem(40);
+      background-color: $mainGreen;
+      border-radius: 4px;
+      box-shadow: 2px 0px 1px 0 $mainGreen;
+    }
+  }
+}
+
+.review-list {
+  background: white;
+  h3 {
+    background: $backgroundGray;
+    letter-spacing: 4px;
+    font-size: px2rem(14);
+    text-align: center;
+    padding: px2rem(36) 0 px2rem(10);
+  }
+
+  .review-item {
+    border-top: 1px solid $borderGray;
+    &:last-of-type {
+      border-bottom: 1px solid $borderGray;
+      box-shadow: 5px 5px 10px $borderGray;
+    }
+    .review-item-header {
+      color: #8a8b97;
+      font-size: px2rem(18);
+      font-weight: 200;
+      text-align: center;
+      height: px2rem(44);
+      line-height: px2rem(44);
+      letter-spacing: 4px;
+      // 展开
+      &.active {
+        color: #252525;
+      }
+      // problemCategory 下面至少选中了一个 problem
+      &.valueMoreThanOne {
+        color: #252525;
+        .iconfont {
+          display: inline-block;
+        }
+      }
+      .iconfont {
+        display: none;
+        color: $mainGreen;
+      }
+    }
+    ul {
+      border-top: 1px solid $borderGray;
+      display: none;
+      &.show {
+        display: block;
+      }
+      li {
+        padding: 0 20px;
+        margin: 10px 0;
+        color: #b7b8c4;
+        &.active {
+          span {
+            color: $mainGreen;
+          }
+          a {
+            color: #5a566c;
+          }
+        }
+        span {
+          font-size: px2rem(16);
+          vertical-align: middle;
+          padding-right: 8px;
+        }
+        a {
+          color: inherit;
+          font-size: px2rem(14);
+        }
+      }
+    }
+  }
+}
+
+.comment {
+  background: $backgroundGray;
+  h3 {
+    letter-spacing: 4px;
+    font-size: px2rem(14);
+    text-align: center;
+    padding: px2rem(36) 0 px2rem(10);
+  }
+  .review-area {
+    width: 100%;
+    height: px2rem(200);
+    border: none;
+    border-top: 1px solid $borderGray;
+    border-bottom: 1px solid $borderGray;
+    padding: px2rem(12);
+    box-sizing: border-box;
+    font-size: px2rem(12);
+    color: #666;
+  }
+  @mixin placeholderMixin {
+    color: $lightGray;
+    font-size: px2rem(12);
+    font-weight: 200;
+    letter-spacing: 2px;
+  }
+  .review-area::-webkit-input-placeholder {
+    /* WebKit browsers */
+    @include placeholderMixin;
+  }
+  .review-area:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    @include placeholderMixin;
+  }
+  .review-area::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    @include placeholderMixin;
+  }
+  .review-area:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    @include placeholderMixin;
+  }
+}
+
+.review-footer {
+  position: sticky;
+  bottom: px2rem(0);
+  height: px2rem(40);
+  line-height: px2rem(40);
+  text-align: center;
+  padding: px2rem(6) 0;
+  background: #efeff3;
+  .review-submit {
+    width: px2rem(360);
+    height: inherit;
+    line-height: inherit;
+    color: white;
+    background-color: $mainGreen;
+    font-size: px2rem(16);
+    letter-spacing: px2rem(4);
+    display: inline-block;
+    box-shadow: 0 2px 9px rgba(90, 86, 108, .23);
+  }
+}
+
+body.modal-open {
+  position: fixed;
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.3);
+
+  .modal-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: px2rem(264);
+    background: white;
+    border-radius: 4px;
+
+    .iconfont {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 20px;
+    }
+
+    h4 {
+      text-align: center;
+      padding: px2rem(38) 0 px2rem(6);
+      font-weight: 400;
+      font-size: px2rem(14);
+    }
+    p {
+      text-align: center;
+      font-weight: 200;
+      padding-bottom: px2rem(40);
+      font-size: px2rem(12);
+    }
+
+    .buttons {
+      display: flex;
+    }
+    a {
+      flex: 1;
+      letter-spacing: 4px;
+      font-size: px2rem(14);
+      height: px2rem(44);
+      line-height: px2rem(44);
+      background: white;
+      border-top: 1px solid $borderGray;
+      text-align: center;
+      &.confirm {
+        color: white;
+        border-top-color: $mainGreen;
+        background: $mainGreen;
+      }
+    }
+  }
+}

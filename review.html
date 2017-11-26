@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!--Set render engine for 360 browser-->
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <!-- UC强制全屏 -->
+  <meta name="full-screen" content="yes">
+  <!-- QQ强制全屏 -->
+  <meta name="x5-fullscreen" content="true">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>评分</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_444790_f2iagj57n1h8h0k9.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/review.css">
+</head>
+
+<body>
+  <div class="container gray">
+    <section class="review-score">
+      <span class="score">50</span>分
+    </section>
+    <section class="review-scroll">
+      <div>
+        <span class="minus"><i class="icon-jianhao iconfont"></i></span>
+      </div>
+      <div class="review-scorebar">
+        <div class="review-scorebar-current"></div>
+      </div>
+      <div>
+        <span class="add"><i class="icon-jiahao iconfont"></i></span>
+      </div>
+    </section>
+    <section class="review-list">
+      <h3>该项目存在的问题</h3>
+      <!-- <article class="review-item">
+        <div class="review-item-header">
+          <span class="iconfont icon-gouxuan"></span>
+          打算打算打算
+        </div>
+        <ul>
+          <li>
+            <span class="iconfont icon-gouxuan"></span>
+            <a href="javascript:">请问千万千万千万千万</a>
+          </li>
+        </ul>
+      </article> -->
+    </section>
+    <section class="comment">
+      <h3>主观评价</h3>
+      <textarea id="review-area" class="review-area" placeholder="请输入你对这个项目的评价"></textarea>
+    </section>
+    <section class="review-footer">
+      <a class="review-submit">提交</a>
+    </section>
+    <section class="modal hide">
+      <div class="modal-center">
+        <span class="iconfont icon-guanbidanchuang close"></span>
+        <h4>提交后无法修改</h4>
+        <p>确定提交吗？</p>
+        <div class="buttons">
+          <a class="close">再想想</a>
+          <a class="confirm">确定</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+<script src="./js/common.js"></script>
+<script src="./lib/zepto.js"></script>
+<script src="./lib/zepto.touch.js"></script>
+<script src="./config/reviewConfig.js"></script>
+<script src="./js/review.js"></script>
+<script src="./js/ping.js"></script>
+
+</html>
