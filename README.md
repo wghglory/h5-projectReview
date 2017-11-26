@@ -1,10 +1,9 @@
-# React h5 demo
+# Node WepApi
 
-## Running Project
+nodejs backend API.
 
 ```bash
-yarn
 npm start
 ```
 
-Username: test, Password: test
+注册登录 api 还需要改进。
