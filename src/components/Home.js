@@ -1,6 +1,6 @@
 import css from '../scss/Home.scss';
 import React, { PureComponent } from 'react';
-import { baseUrl } from '../utils/api';
+import { getProjects } from '../utils/api';
 import PropTypes from 'prop-types';
 
 export default class Home extends PureComponent {
@@ -11,16 +11,12 @@ export default class Home extends PureComponent {
   };
 
   async componentDidMount() {
-    const projects = await this.fetchData();
+    const projects = await this.fetchProjects();
     this.fillProjects(projects);
   }
 
-  async fetchData() {
-    const res = await fetch(`${baseUrl}/projects`, {
-      method: 'get',
-      mode: 'cors'
-    });
-
+  async fetchProjects() {
+    const res = await getProjects();
     return res.json();
   }
 
@@ -38,24 +34,17 @@ export default class Home extends PureComponent {
     this.setState({ reviewedProjects, unReviewedProjects });
   }
 
-  /*
+  /* // promise
   componentDidMount() {
-    this.fetchData().then((res) => {
+    this.fetchProjects().then((res) => {
       this.fillProjects(res);
     });
   }
 
-  fetchData() {
-    return fetch(`${baseUrl}/projects`, {
-      method: 'get',
-      mode: 'cors'
-    }).then((res) => {
+  fetchProjects() {
+    return getProjects().then((res) => {
       return res.json();
     });
-  }
-
-  fillProjects(projects) {
-    this.setState({ projects });
   } */
 
   showUnReviewed = () => {

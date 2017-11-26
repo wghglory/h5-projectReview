@@ -1,8 +1,8 @@
 import css from '../scss/Project.scss';
 import React, { PureComponent } from 'react';
-import { baseUrl, formatTime } from '../utils/api';
+import { formatTime } from '../utils/tools';
+import { getProject } from '../utils/api';
 import classNames from 'classnames';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 export default class Project extends PureComponent {
@@ -13,7 +13,7 @@ export default class Project extends PureComponent {
   };
 
   componentDidMount() {
-    axios.get(`${baseUrl}/projects/${this.props.match.params.id}`).then((res) => {
+    getProject(this.props.match.params.id).then((res) => {
       this.setState({
         project: res.data.project
       });

@@ -1,6 +1,7 @@
 import css from '../scss/Review.scss';
 import React, { PureComponent } from 'react';
-import { baseUrl, ModalHelper } from '../utils/api';
+import { ModalHelper } from '../utils/tools';
+import { getReview } from '../utils/api';
 import PropTypes from 'prop-types';
 import ReviewProblemList from './ReviewProblemList';
 import ReviewModal from './ReviewModal';
@@ -16,7 +17,7 @@ export default class Review extends PureComponent {
   };
 
   componentDidMount() {
-    fetch(`${baseUrl}/reviews?projectId=${this.props.match.params.id}`).then((res) => res.json()).then((res) =>
+    getReview(this.props.match.params.id).then((res) => res.json()).then((res) =>
       this.setState({
         reviews: res
       })

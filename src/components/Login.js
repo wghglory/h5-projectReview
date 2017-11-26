@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import css from '../scss/Login.scss';
-import { baseUrl } from '../utils/api';
+import { postLogin } from '../utils/api';
 
 export default class Login extends Component {
   // babel-plugin-transform-class-properties
@@ -43,16 +43,7 @@ export default class Login extends Component {
   tryLogin = () => {
     // 如果 登录 激活状态才可以提交
     if (this.state.username !== '' && this.state.password !== '') {
-      fetch(`${baseUrl}/login`, {
-        credentials: 'include', //pass cookies, for authentication
-        method: 'post',
-        headers: {
-          Accept: 'application/json, application/xml, text/plain, text/html, *.*',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-        },
-        body: `username=${this.state.username}&password=${this.state.password}`,
-        mode: 'cors'
-      })
+      postLogin(this.state.username, this.state.password)
         .then((res) => {
           // 代码执行路由跳转
           this.props.history.push('/');
