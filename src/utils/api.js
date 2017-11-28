@@ -22,9 +22,9 @@ export function getProjects() {
   });
 }
 
-export function getProject(id) {
-  return axios.get(`${baseUrl}/projects/${id}`);
-}
+// export function getProject(id) {
+//   return axios.get(`${baseUrl}/projects/${id}`);
+// }
 
 export function getReview(id) {
   return fetch(`${baseUrl}/reviews?projectId=${id}`);
