@@ -6,6 +6,6 @@ import Review from './components/Review.vue';
 export default [
   { path: '/', component: Home },
   { path: '/login', component: Login },
-  { path: '/project/:id', component: Project },
+  { path: '/projects/:id', component: Project },
   { path: '/review', component: Review }
 ];

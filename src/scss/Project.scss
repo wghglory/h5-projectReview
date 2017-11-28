@@ -36,7 +36,7 @@
   top: px2rem(48);
   left: px2rem(92);
   background: #eef0f2;
-  height: 4px;
+  height: px2rem(4);
   width: px2rem(200);
 }
 
@@ -48,13 +48,13 @@
 
 .currentTime,
 .duration {
-  font-size: 12px;
+  font-size: px2rem(12);
   color: grey;
   position: absolute;
 }
 
 .currentTime {
-  left: px2rem(55);
+  left: px2rem(54);
   top: px2rem(42);
 }
 
