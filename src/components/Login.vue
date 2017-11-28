@@ -30,14 +30,14 @@
   } from '../utils/api';
 
   export default {
-    data() {
+    data () {
       return {
         username: '',
         password: ''
-      }
+      };
     },
     computed: {
-      loginButtonStatus() {
+      loginButtonStatus () {
         if (this.username !== '' && this.password !== '') {
           return 'green';
         } else {
@@ -46,37 +46,37 @@
       }
     },
     methods: {
-      clearUsername() {
+      clearUsername () {
         this.username = '';
       },
-      clearPassword() {
+      clearPassword () {
         this.password = '';
       },
-      togglePassword() {
+      togglePassword () {
         if (this.$refs.passwordInput.type === 'text') {
-          this.$refs.passwordInput.type = 'password'
+          this.$refs.passwordInput.type = 'password';
         } else {
           this.$refs.passwordInput.type = 'text';
         }
       },
-      tryLogin() {
+      tryLogin () {
         if (this.loginButtonStatus === 'green') {
           this.$http.post(`${baseUrl}/login`, {
-              username: this.username,
-              password: this.password
-            })
+            username: this.username,
+            password: this.password
+          })
             .then((res) => {
               // 代码执行路由跳转
               this.$router.push('/');
             })
             .catch((err) => {
+              console.log(err);
               alert('账号密码错误');
             });
         }
       }
     }
-  }
-
+  };
 </script>
 
 <style lang="scss" scoped>

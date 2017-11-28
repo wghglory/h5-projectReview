@@ -39,28 +39,27 @@
   } from '../utils/api';
 
   export default {
-    data() {
+    data () {
       return {
         project: {},
         playing: false,
         playProgress: 0
-      }
+      };
     },
     computed: {
-      currentTime() {
-        return this.$refs.audioEle ? formatTime(this.$refs.audioEle.currentTime) : `00:00`
+      currentTime () {
+        return this.$refs.audioEle ? formatTime(this.$refs.audioEle.currentTime) : `00:00`;
       },
-      duration() {
-        return this.$refs.audioEle ? formatTime(this.$refs.audioEle.duration) : `00:00`
+      duration () {
+        return this.$refs.audioEle ? formatTime(this.$refs.audioEle.duration) : `00:00`;
       }
     },
-    created() {
+    created () {
       this.$http.get(`${baseUrl}/projects/${this.$route.params.id}`).then(res => {
         this.project = res.body.project;
       });
     }
-  }
-
+  };
 </script>
 
 <style lang="scss" scoped>

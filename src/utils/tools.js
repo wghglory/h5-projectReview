@@ -1,4 +1,4 @@
-export function formatTime(seconds) {
+export function formatTime (seconds) {
   if (isNaN(seconds)) {
     return `00:00`;
   } else {
@@ -35,15 +35,15 @@ body.modal-open {
  * 打开 modal 时：ModalHelper.afterOpen();并设置.modal display block
  * 关闭 modal 时：ModalHelper.beforeClose();并设置.modal display none
  */
-export const ModalHelper = (function(bodyCls) {
+export const ModalHelper = (function (bodyCls) {
   let scrollTop;
   return {
-    afterOpen: function() {
+    afterOpen: function () {
       scrollTop = document.scrollingElement.scrollTop;
       document.body.classList.add(bodyCls);
       document.body.style.top = -scrollTop + 'px';
     },
-    beforeClose: function() {
+    beforeClose: function () {
       document.body.classList.remove(bodyCls);
       // scrollTop lost after set position:fixed, restore it back.
       document.scrollingElement.scrollTop = scrollTop;

@@ -1,28 +1,23 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import App from './App';
+import router from './router';
 import VueResource from 'vue-resource';
-import Routes from './routes';
 // import { store } from './store/store';
 
 import './scss/reset.scss';
-import './scss/common.scss';
+import '@/scss/common.scss';
 
-import App from './App.vue';
-
-Vue.use(VueRouter);
 Vue.use(VueResource);
-
-// Register routes
-const router = new VueRouter({
-  routes: Routes,
-  mode: 'history'
-});
+Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
   router,
   // store,
-  render: (h) => h(App)
+  template: '<App/>',
+  components: { App }
 });
 
 // resize orientation 更新页面字体大小

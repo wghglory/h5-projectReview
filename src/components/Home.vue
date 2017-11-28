@@ -35,31 +35,30 @@
   } from '../utils/api';
 
   export default {
-    data() {
+    data () {
       return {
         showReviewed: false,
         projects: []
-      }
+      };
     },
     computed: {
-      unReviewedProjects() {
+      unReviewedProjects () {
         return this.projects.filter(p => {
-          return p.reviewed === false
-        })
+          return p.reviewed === false;
+        });
       },
-      reviewedProjects() {
+      reviewedProjects () {
         return this.projects.filter(p => {
-          return p.reviewed === true
-        })
-      },
+          return p.reviewed === true;
+        });
+      }
     },
-    created() {
+    created () {
       this.$http.get(`${baseUrl}/projects`).then(res => {
         this.projects = res.body;
       });
     }
-  }
-
+  };
 </script>
 
 <style lang="scss" scoped>

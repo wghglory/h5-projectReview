@@ -4,7 +4,7 @@ export const baseUrl = `http://localhost:3000/api`;
 
 export function postLogin(username, password) {
   return fetch(`${baseUrl}/login`, {
-    credentials: 'include', //pass cookies, for authentication
+    credentials: 'include', // pass cookies, for authentication
     method: 'post',
     headers: {
       Accept: 'application/json, application/xml, text/plain, text/html, *.*',
