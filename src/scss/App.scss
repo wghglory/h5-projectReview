@@ -1,0 +1,19 @@
+@import "globals";
+
+html,
+body {
+  min-height: 100%;
+}
+
+h1 {
+  @include clear;
+}
+
+body {
+  @include clear;
+  // @include fade-bg($light, $light-grey);
+
+  div#app {
+    height: 100%;
+  }
+}

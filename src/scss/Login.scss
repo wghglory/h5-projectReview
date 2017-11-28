@@ -1,0 +1,94 @@
+// put these into component style tag directly so "scoped" works
+@import "globals";
+
+.loginContainer {
+  background: url('../assets/img/login-background.jpg') no-repeat;
+  background-size: cover;
+}
+
+.logo {
+  height: 30%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: $mainGreen;
+  .title {
+    font-size: px2rem(50);
+    padding: px2rem(10) 0;
+  }
+  h3 {
+    font-size: px2rem(14);
+    font-weight: 200;
+    letter-spacing: 4px;
+  }
+}
+
+.loginForm {
+  height: 64%;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-top: px2rem(60);
+
+  div {
+    border-bottom: 1px solid rgb(213, 213, 213);
+    width: 80%;
+    font-size: px2rem(16);
+    padding: px2rem(20) 0 px2rem(12);
+    position: relative;
+    &:last-of-type {
+      border-bottom: none;
+      padding-top: px2rem(32);
+    }
+    input {
+      border: none;
+      width: 70%;
+      background: transparent;
+    }
+    .iconfont {
+      position: absolute;
+      color: $lightGray;
+      right: 0;
+      font-size: px2rem(16);
+    }
+
+    .username ~ .icon-guanbi {
+      right: 0 !important;
+    }
+    .password ~ .icon-guanbi {
+      right: px2rem(40) !important;
+    }
+    .password ~ .icon-mima-yanjing-guanbi,
+    .password ~ .icon-xianshimima1 {
+      right: 0;
+    }
+    .submit {
+      letter-spacing: 4px;
+      width: 100%;
+      padding: px2rem(10) 0;
+      color: white;
+      border: none;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-size: 1rem;
+      display: block;
+      text-align: center;
+      &.gray {
+        background: #d3d4dc;
+      }
+
+      &.green {
+        background: $mainGreen;
+      }
+    }
+  }
+}
+
+footer {
+  height: 6%;
+  text-align: center;
+  font-size: px2rem(12);
+  color: $lightGray;
+  letter-spacing: 4px;
+  font-weight: 200;
+}
