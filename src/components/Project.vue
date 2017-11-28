@@ -3,7 +3,7 @@
     <section class="wrapper">
       <div class="mediaTools">
         <audio controls ref="audioEle">
-          <source src="/static/media/music.mp3" type="audio/mpeg" />
+          <source src="../assets/media/music.mp3" type="audio/mpeg" />
         </audio>
         <div :class="['playerBtn', {play: !playing }]" @touchstart="playing = !playing" />
         <span class="currentTime">{{currentTime}}</span>
