@@ -1,4 +1,40 @@
-# H5ProjectReviewAngular
+# H5 ProjectReview Angular
+
+## use scss
+
+```bash
+ng new My_New_Project --style=scss
+```
+
+### 已有 angular-cli 工程改为 sass
+
+```bash
+npm install node-sass --save-dev
+```
+
+修改已有项目的 .angular-cli.json 配置文件：
+
+修改最后的 defaults 标签:
+
+```diff
+"defaults": {
+-  "styleExt": "css",
++  "styleExt": "scss",
+}
+```
+
+然后修改styles标签:
+
+```diff
+"styles": [
+- "styles.css"
++ "styles.scss"
+]
+```
+
+并把全局 style.css 文件改为 style.scss
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
 
