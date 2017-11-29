@@ -13,7 +13,7 @@ export default new Router({
     { path: '/', component: Home },
     { path: '/login', component: Login },
     { path: '/projects/:id', component: Project },
-    { path: '/review', component: Review }
+    { path: '/reviews', component: Review }
   ],
   mode: 'history'
 });
