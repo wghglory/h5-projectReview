@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { ModalHelper } from '../utils/tools';
 import { getReview } from '../utils/api';
 import PropTypes from 'prop-types';
-import ReviewProblemList from './ReviewProblemList';
+import ReviewProblemCategory from './ReviewProblemCategory';
 import ReviewModal from './ReviewModal';
 
 export default class Review extends PureComponent {
@@ -11,7 +11,7 @@ export default class Review extends PureComponent {
     reviews: [],
     selectedReviewId: -1,
     currentScore: 50,
-    problems: [], // 选中的问题
+    selectedProblems: {}, // { problemCategory/reviewId : [problem1, problem2] }
     comment: '',
     isModalOpen: false
   };
@@ -28,7 +28,7 @@ export default class Review extends PureComponent {
 
   // 子级向 siblings 通信，更新 problemCateogry
   // 子级 li click 更新 parent state，此状态通过 props 传到 siblings，selectedReviewId 和 siblings id 对比判断状态
-  onChildToggle = (id) => {
+  onProblemCategoryToggle = (id) => {
     // 如果还是选中刚才选中的li，则 toggle 它，此时没有选中任何 li
     if (id === this.state.selectedReviewId) {
       this.setState({
@@ -42,8 +42,15 @@ export default class Review extends PureComponent {
   };
 
   // 操作 具体 problems
-  onProblemToggle = (problems) => {
-    this.setState({ problems });
+  onProblemToggle = ({ reviewId, problems }) => {
+    this.setState(
+      {
+        selectedProblems: { ...this.state.selectedProblems, ...{ [reviewId]: problems } }
+      },
+      () => {
+        console.log(this.state.selectedProblems);
+      }
+    );
   };
   /* ----------------------------- 问题列表 结束 --------------------------------- */
 
@@ -80,7 +87,9 @@ export default class Review extends PureComponent {
     // 按下瞬间计算当前位置的分数
     this.setState({
       // currentScore: Math.floor(e.target.offsetWidth / pWidth * 100)
-      currentScore: Math.floor((prevClientX - this.scorebar.offsetLeft) / this.scorebar.clientWidth * 100)
+      currentScore: Math.floor(
+        (prevClientX - this.scorebar.offsetLeft) / this.scorebar.clientWidth * 100
+      )
     });
   };
 
@@ -89,7 +98,10 @@ export default class Review extends PureComponent {
     const touch = e.targetTouches[0];
 
     // 如果鼠标滑动到 parentNode 之外，阻止之后代码
-    if (touch.clientX < this.scorebar.offsetLeft || touch.clientX > this.scorebar.offsetLeft + pWidth) {
+    if (
+      touch.clientX < this.scorebar.offsetLeft ||
+      touch.clientX > this.scorebar.offsetLeft + pWidth
+    ) {
       return false;
     }
 
@@ -143,7 +155,7 @@ export default class Review extends PureComponent {
 
   onConfirmSubmit = () => {
     const score = this.state.currentScore;
-    const problems = this.state.problems;
+    const problems = Object.values(this.state.selectedProblems);
     const comment = this.state.comment;
     const searchParam = this.props.location.search.slice(1);
 
@@ -184,12 +196,12 @@ export default class Review extends PureComponent {
             <h3>该项目存在的问题</h3>
             {/* 某个 li 点击改变 siblings 状态！向子级传入选中 id，回调函数修改选中 id */}
             {this.state.reviews.map((review, index) => (
-              <ReviewProblemList
+              <ReviewProblemCategory
                 review={review}
                 key={index}
                 onProblemToggle={this.onProblemToggle}
                 selectedReviewId={this.state.selectedReviewId}
-                onChildToggle={this.onChildToggle}
+                onProblemCategoryToggle={this.onProblemCategoryToggle}
               />
             ))}
           </div>

@@ -4,12 +4,12 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ReviewProblem from './ReviewProblem';
 
-export default class ReviewProblemList extends PureComponent {
+export default class ReviewProblemCategory extends PureComponent {
   state = {
     selectedProblems: []
   };
 
-  onChildSelected = (problem) => {
+  onChildSelected = (reviewId, problem) => {
     let task = null;
     // 不存在则加入到 array
     if (this.state.selectedProblems.indexOf(problem) === -1) {
@@ -34,12 +34,12 @@ export default class ReviewProblemList extends PureComponent {
 
     // 通知父级都选了哪些问题，必须等待上面更新完成后再通知
     task.then(() => {
-      this.props.onProblemToggle(this.state.selectedProblems);
+      this.props.onProblemToggle({ reviewId, problems: this.state.selectedProblems });
     });
   };
 
   render() {
-    const { review, selectedReviewId, onChildToggle } = this.props;
+    const { review, selectedReviewId, onProblemCategoryToggle } = this.props;
     return (
       <article className={css.reviewItem}>
         <div
@@ -48,14 +48,18 @@ export default class ReviewProblemList extends PureComponent {
             [css.active]: review.id === selectedReviewId,
             [css.valueMoreThanOne]: this.state.selectedProblems.length > 0 // 选中至少一个问题，出现对号
           })}
-          onTouchStart={() => onChildToggle(review.id, true)}
+          onTouchStart={() => onProblemCategoryToggle(review.id, true)}
         >
           <span className="iconfont icon-gouxuan" />
           {review.problemCategory}
         </div>
         <ul className={classNames({ hide: review.id !== selectedReviewId })}>
           {review.problems.map((problem, index) => (
-            <ReviewProblem onChildSelected={this.onChildSelected} problem={problem} key={index} />
+            <ReviewProblem
+              onChildSelected={this.onChildSelected.bind(this, review.id, problem)}
+              problem={problem}
+              key={index}
+            />
           ))}
         </ul>
       </article>
@@ -63,11 +67,11 @@ export default class ReviewProblemList extends PureComponent {
   }
 }
 
-ReviewProblemList.propTypes = {
+ReviewProblemCategory.propTypes = {
   match: PropTypes.object,
   history: PropTypes.object,
   review: PropTypes.object.isRequired,
   onProblemToggle: PropTypes.func.isRequired,
   selectedReviewId: PropTypes.number.isRequired,
-  onChildToggle: PropTypes.func.isRequired
+  onProblemCategoryToggle: PropTypes.func.isRequired
 };
