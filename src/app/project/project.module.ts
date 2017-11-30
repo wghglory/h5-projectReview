@@ -5,21 +5,21 @@ import { RouterModule } from '@angular/router';
 
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectGuardService } from './project.guard';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
       { path: 'projects', component: ProjectListComponent },
-      { path: 'projects/:id', component: ProjectDetailComponent }
-      // {
-      //   path: 'projects/:id',
-      //   canActivate: [ProjectGuardService],
-      //   component: ProjectDetailComponent
-      // }
+      {
+        path: 'projects/:id',
+        canActivate: [ProjectGuardService],
+        component: ProjectDetailComponent
+      }
     ])
   ],
   declarations: [ProjectListComponent, ProjectDetailComponent],
-  providers: [ProjectService]
+  providers: [ProjectService, ProjectGuardService]
 })
 export class ProjectModule {}

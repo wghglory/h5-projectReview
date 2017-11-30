@@ -2,7 +2,9 @@ export function formatTime(seconds: number): string {
   if (isNaN(seconds)) {
     return `00:00`;
   } else {
-    return [(seconds / 60) % 60, seconds % 60].join(':').replace(/\b(\d)\b/g, '0$1');
+    return [Math.floor((seconds / 60) % 60), Math.floor(seconds % 60)]
+      .join(':')
+      .replace(/\b(\d)\b/g, '0$1');
   }
 }
 
