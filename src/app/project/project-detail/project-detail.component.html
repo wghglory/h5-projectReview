@@ -1,3 +1,29 @@
-<p>
-  project-detail works!
-</p>
+<div class="container">
+    <section class="wrapper">
+      <div class="mediaTools">
+        <audio controls #audioEle>
+          <source src="../../../assets/media/music.mp3" type="audio/mpeg" />
+        </audio>
+        <div [ngClass]="{'playerBtn':true, play: !playing }" (touchstart)="togglePlay()"></div>
+        <span class="currentTime">{{formatTime(currentTime)}}</span>
+        <span class="duration">{{formatTime(duration)}}</span>
+        <div class="mediaProgress">
+          <div class="playProgress" [ngStyle]="{ 'width.px': playProgress }" ></div>
+        </div>
+      </div>
+      <div class="project">
+        <h3 class="projectImg">自省</h3>
+        <div>每天自省，虚心学习，广交善缘，问心无愧</div>
+        <div>每天自省，虚心学习，广交善缘，问心无愧</div>
+        <div>每天自省，虚心学习，广交善缘，问心无愧</div>
+        <label>Project Name</label>
+        <p>{{project.name}}</p>
+        <img src="../../../assets/img/default-post.jpg" />
+      </div>
+    </section>
+    <section class="toReport">
+      <a class="toReportBtn" (touchstart)="goToReview()">
+        去评分
+      </a>
+    </section>
+  </div>

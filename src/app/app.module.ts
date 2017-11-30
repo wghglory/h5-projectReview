@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { HomeComponent } from './home/home.component';
 import { ProjectModule } from './project/project.module';
+import { ReviewModule } from './review/review.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -22,7 +23,8 @@ import { ProjectModule } from './project/project.module';
       // { path: '', redirectTo: 'projects', pathMatch: 'full' },
       // { path: '**', redirectTo: 'projects', pathMatch: 'full' }
     ]),
-    ProjectModule
+    ProjectModule,
+    ReviewModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

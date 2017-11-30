@@ -20,6 +20,10 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
+  getProject(id): Observable<any> {
+    return this._http.get<any>(`${baseUrl}/projects/${id}`).do((res) => {}).catch(this.handleError);
+  }
+
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
