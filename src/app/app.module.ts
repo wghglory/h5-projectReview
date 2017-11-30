@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { HomeComponent } from './home/home.component';
+import { ProjectModule } from './project/project.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -18,10 +19,10 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent }
-      // { path: 'projects', component: LoginComponent }
       // { path: '', redirectTo: 'projects', pathMatch: 'full' },
       // { path: '**', redirectTo: 'projects', pathMatch: 'full' }
-    ])
+    ]),
+    ProjectModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
