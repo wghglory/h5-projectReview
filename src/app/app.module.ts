@@ -6,17 +6,19 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
 import { LoginService } from './login/login.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
+      { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent }
+      // { path: 'projects', component: LoginComponent }
       // { path: '', redirectTo: 'projects', pathMatch: 'full' },
       // { path: '**', redirectTo: 'projects', pathMatch: 'full' }
     ])
