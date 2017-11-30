@@ -1,0 +1,58 @@
+@import "../../../globals";
+
+.reviewItem {
+  border-top: 1px solid $borderGray;
+  &:last-of-type {
+    border-bottom: 1px solid $borderGray;
+    box-shadow: 5px 5px 10px $borderGray;
+  }
+  .reviewItemHeader {
+    color: #8a8b97;
+    font-size: px2rem(18);
+    font-weight: 200;
+    text-align: center;
+    height: px2rem(44);
+    line-height: px2rem(44);
+    letter-spacing: 4px;
+    // 展开
+    &.active {
+      color: #252525;
+    }
+    // problemCategory 下面至少选中了一个 problem
+    &.valueMoreThanOne {
+      color: #252525;
+      .iconfont {
+        display: inline-block;
+      }
+    }
+    .iconfont {
+      display: none;
+      color: $mainGreen;
+    }
+  }
+  ul {
+    border-top: 1px solid $borderGray;
+    li {
+      padding: 0 20px;
+      margin: 10px 0;
+      color: #b7b8c4;
+      &.active {
+        span {
+          color: $mainGreen;
+        }
+        a {
+          color: #5a566c;
+        }
+      }
+      span {
+        font-size: px2rem(16);
+        vertical-align: middle;
+        padding-right: 8px;
+      }
+      a {
+        color: inherit;
+        font-size: px2rem(14);
+      }
+    }
+  }
+}

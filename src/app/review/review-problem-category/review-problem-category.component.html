@@ -1,0 +1,11 @@
+<article class="reviewItem">
+  <div [ngClass]="{'reviewItemHeader':true, 'active': review.id === selectedReviewId, 'valueMoreThanOne': selectedProblems.length > 0}"
+    (touchstart)="emitProblemCategory(review.id)">
+    <span class="iconfont icon-gouxuan"></span> {{review.problemCategory}}
+  </div>
+  <ul [ngClass]="{ hide: review.id !== selectedReviewId }">
+    <ng-container *ngFor="let problem of review.problems; let index = index;">
+      <app-review-problem [problem]="problem" (problemChanged)="onProblemChange(review.id, problem)"></app-review-problem>
+    </ng-container>
+  </ul>
+</article>

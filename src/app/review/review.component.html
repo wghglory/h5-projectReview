@@ -1,3 +1,41 @@
-<p>
-  review works!
-</p>
+<div class="container gray">
+  <section class="wrapper">
+    <div class="reviewScore">
+      <span class="score">{{currentScore}}</span>分
+    </div>
+    <div class="reviewScroll">
+      <div>
+        <span (touchstart)="updateScore('-')">
+          <i class="icon-jianhao iconfont"></i>
+        </span>
+      </div>
+      <div class="reviewScorebar" #scorebar>
+        <div class="reviewScorebarCurrent" [ngStyle]="{ 'width.%': currentScore }" (touchstart)="touchStart($event)" (touchmove)="touchMove($event)"
+          (touchend)="touchEnd($event)"></div>
+      </div>
+      <div>
+        <span (touchstart)="updateScore('+')">
+          <i class="icon-jiahao iconfont"></i>
+        </span>
+      </div>
+    </div>
+    <div class="reviewList">
+      <h3>该项目存在的问题</h3>
+      <!-- ng-container is like template in vue.js -->
+      <ng-container *ngFor="let review of reviews; let index = index;">
+        <app-review-problem-category [review]="review" [selectedReviewId]="selectedReviewId" (problemCategoryChanged)="onProblemCategoryToggle($event)"
+          (problemsChanged)="onProblemsChange($event)"></app-review-problem-category>
+      </ng-container>
+    </div>
+    <div class="comment">
+      <h3>主观评价</h3>
+      <textarea v-model="comment" class="reviewArea" placeholder="请输入你对这个项目的评价"></textarea>
+    </div>
+  </section>
+  <section class="reviewFooter">
+    <a class="reviewSubmit" (touchstart)="onOpenModal()">
+      提交
+    </a>
+  </section>
+  <app-review-modal [isModalOpen]="isModalOpen" (modalClosed)="onCloseModal()" (submitForm)="onFormSubmit()"></app-review-modal>
+</div>

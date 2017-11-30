@@ -1,0 +1,24 @@
+@import "../../../globals";
+
+li {
+  padding: 0 20px;
+  margin: 10px 0;
+  color: #b7b8c4;
+  &.active {
+    span {
+      color: $mainGreen;
+    }
+    a {
+      color: #5a566c;
+    }
+  }
+  span {
+    font-size: px2rem(16);
+    vertical-align: middle;
+    padding-right: 8px;
+  }
+  a {
+    color: inherit;
+    font-size: px2rem(14);
+  }
+}

@@ -1,0 +1,15 @@
+<section [ngClass]="{'modal':true, 'hide': !isModalOpen }">
+  <div class="modalCenter">
+    <span class="iconfont icon-guanbidanchuang close" (touchstart)="onCloseModal()"></span>
+    <h4>提交后无法修改</h4>
+    <p>确定提交吗？</p>
+    <div class="buttons">
+      <a class="close" (touchstart)="onCloseModal()">
+        再想想
+      </a>
+      <a class="confirm" (touchstart)="onConfirmSubmit()">
+        确定
+      </a>
+    </div>
+  </div>
+</section>

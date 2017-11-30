@@ -1,8 +1,7 @@
 import { ProjectService } from './../project.service';
 import { IProject } from './../project';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { formatTime } from '../../../utils/tools';
 import { getProject } from '../../../utils/api';
 
