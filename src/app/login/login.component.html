@@ -1,0 +1,23 @@
+<div class="container loginContainer">
+  <header class="logo">
+    <h1 class="title">移动开发</h1>
+    <h3>一切都会更美好</h3>
+  </header>
+  <form class="loginForm flexbox-vertical">
+    <div>
+      <input class="username" type="text" placeholder="用户名" [(ngModel)]="username" name="username"/>
+      <i class="iconfont icon-guanbi" (touchstart)="clearUsername()"></i>
+    </div>
+    <div>
+      <input class="password" [type]="inputType" placeholder="密码" [(ngModel)]="password" name="password" />
+      <i class="iconfont icon-guanbi" (touchstart)="password=''"></i>
+      <i [ngClass]="{'eye':true, 'iconfont':true, 'icon-xianshimima1':inputType === 'password', 'icon-mima-yanjing-guanbi':inputType === 'text'}" (touchstart)="togglePassword()"></i>
+    </div>
+    <div>
+      <a [ngClass]="['submit', username !== '' && password !== '' ? 'green' : 'gray']" (touchstart)="tryLogin()">
+        登录
+      </a>
+    </div>
+  </form>
+  <footer>光辉岁月挥斥方遒</footer>
+</div>

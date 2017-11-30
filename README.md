@@ -38,6 +38,38 @@ npm install node-sass --save-dev
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
 
+## Thought
+
+Angular Module：
+
+app module --> login component
+project module --> home + project
+review module --> review component
+
+### todo in future
+
+Add nav in home component. Maybe home just shows introduction and navlinks. If that happens, login + home should be in app module. And project List and individual project are in project module.
+
+## Issue solving
+
+1. Can't bind to 'ngModel' since it isn't a known property of 'input'
+
+```typescript
+import { FormsModule } from '@angular/forms';
+
+[...]
+
+@NgModule({
+  imports: [
+    [...]
+    FormsModule
+  ],
+  [...]
+})
+```
+
+---
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
