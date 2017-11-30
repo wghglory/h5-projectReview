@@ -1,4 +1,10 @@
+import { ProjectService } from './../project.service';
+import { Observable } from 'rxjs/Observable';
+import { baseUrl } from './../../../utils/api';
+import { HttpClient } from '@angular/common/http';
+import { IProject } from './../project';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   // selector: 'app-project-list',
@@ -6,7 +12,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-  constructor() {}
+  constructor(private _router: Router, private _projectService: ProjectService) {}
+  errorMessage: string = '';
+  showReviewed: boolean = false;
+  projects: Array<IProject> = [];
+  unReviewedProjects: Array<IProject> = [];
+  reviewedProjects: Array<IProject> = [];
 
-  ngOnInit() {}
+  goToProjectDetail(id): void {
+    this._router.navigate([`/projects/${id}`]);
+  }
+
+  ngOnInit() {
+    this._projectService.getProjects().subscribe((projects) => {
+      this.projects = projects;
+
+      projects.forEach((p) => {
+        if (p.reviewed) {
+          this.reviewedProjects.push(p);
+        } else {
+          this.unReviewedProjects.push(p);
+        }
+      });
+    }, (error) => (this.errorMessage = <any>error));
+  }
 }

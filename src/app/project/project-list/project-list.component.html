@@ -1,3 +1,26 @@
-<p>
-  project-list works!
-</p>
+<div class="container gray">
+  <nav class="reviewNav flexbox">
+    <a [ngClass]="{active: !showReviewed}" (touchstart)="showReviewed = false;">
+      未批阅
+    </a>
+    <a [ngClass]="{active: showReviewed}" (touchstart)="showReviewed = true;">
+      已批阅
+    </a>
+  </nav>
+  <section class="projectList">
+    <ul [ngClass]="{hide: showReviewed}">
+      <li *ngFor="let p of unReviewedProjects; let index = index" (touchstart)="goToProjectDetail(p.id)">
+        <span [ngStyle]="{ 'background-size': 'contain',  'background': 'url(../../../assets/img/' + (index % 5 + 1) + '@2x.png) no-repeat center' }"></span>
+        <span>{{p.name}}</span>
+        <span class="icon-zhankai iconfont"></span>
+      </li>
+    </ul>
+    <ul [ngClass]="{hide: !showReviewed}">
+      <li *ngFor="let p of reviewedProjects; let index = index" (touchstart)="goToProjectDetail(p.id)">
+        <span [ngStyle]="{ 'background-size': 'contain',  'background': 'url(../../../assets/img/' + (index % 5 + 1) + '@2x.png) no-repeat center' }"></span>
+        <span>{{p.name}}</span>
+        <span class="icon-zhankai iconfont"></span>
+      </li>
+    </ul>
+  </section>
+</div>
