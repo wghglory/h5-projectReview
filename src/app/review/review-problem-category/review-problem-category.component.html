@@ -5,7 +5,7 @@
   </div>
   <ul [ngClass]="{ hide: review.id !== selectedReviewId }">
     <ng-container *ngFor="let problem of review.problems; let index = index;">
-      <app-review-problem [problem]="problem" (problemChanged)="onProblemChange(review.id, problem)"></app-review-problem>
+      <app-review-problem [problem]=problem (problemChanged)="onProblemChange(review.id, problem)"></app-review-problem>
     </ng-container>
   </ul>
 </article>

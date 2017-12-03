@@ -1,7 +1,6 @@
 import { ProjectService } from './../project.service';
 import { Observable } from 'rxjs/Observable';
 import { baseUrl } from './../../../utils/api';
-import { HttpClient } from '@angular/common/http';
 import { IProject } from './../project';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,8 +14,8 @@ export class ProjectListComponent implements OnInit {
   constructor(private _router: Router, private _projectService: ProjectService) {}
   errorMessage: string = '';
   showReviewed: boolean = false;
-  projects: Array<IProject> = [];
-  unReviewedProjects: Array<IProject> = [];
+  projects: IProject[] = [];
+  unReviewedProjects: IProject[] = [];
   reviewedProjects: Array<IProject> = [];
 
   goToProjectDetail(id): void {

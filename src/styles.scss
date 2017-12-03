@@ -35,3 +35,8 @@ body {
 .hide {
   display: none;
 }
+
+.nav.navbar-nav li {
+  display: inline-block;
+  padding: px2rem(8);
+}

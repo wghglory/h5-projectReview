@@ -1,6 +1,10 @@
 import { baseUrl } from './../../utils/api';
 import { Injectable } from '@angular/core';
+
+// use either one below
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Http } from '@angular/http';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
@@ -11,17 +15,10 @@ import { ILogin } from './login';
 
 @Injectable()
 export class LoginService {
-  constructor(private _http: HttpClient) {}
-
-  // getProducts(): Observable<ILogin[]> {
-  //   return this._http
-  //     .get<ILogin[]>(this._productUrl)
-  //     .do((data) => console.log('All: ' + JSON.stringify(data)))
-  //     .catch(this.handleError);
-  // }
+  constructor(private _httpClient: HttpClient) {}
 
   postLogin(username: string, password: string): any {
-    return this._http
+    return this._httpClient
       .post(`${baseUrl}/login`, {
         username,
         password,
@@ -47,10 +44,6 @@ export class LoginService {
     //   mode: 'cors'
     // });
   }
-
-  // getProduct(id: number): Observable<ILogin> {
-  //   return this.getProducts().map((products: ILogin[]) => products.find((p) => p.productId === id));
-  // }
 
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure

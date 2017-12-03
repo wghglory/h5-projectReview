@@ -11,9 +11,9 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class ReviewComponent implements OnInit {
   @ViewChild('scorebar') scorebar: ElementRef;
   currentScore: number = 50;
-  reviews: Array<any> = [];
+  reviews: any[] = [];
   selectedReviewId: number = -1;
-  selectedProblems: Object = {};
+  selectedProblems: { id: number; problems: string[] }; // should be comma inside
   comment: string = '';
   isModalOpen: boolean = false;
 

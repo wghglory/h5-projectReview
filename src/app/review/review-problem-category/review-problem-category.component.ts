@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./review-problem-category.component.scss']
 })
 export class ReviewProblemCategoryComponent implements OnInit {
-  selectedProblems: Array<any> = [];
+  selectedProblems: any[] = [];
   @Input() review: IReview;
   @Input() selectedReviewId: number;
   @Output() problemCategoryChanged: EventEmitter<number> = new EventEmitter<number>();

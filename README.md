@@ -50,6 +50,10 @@ review module --> review component
 
 Add nav in home component. Maybe home just shows introduction and navlinks. If that happens, login + home should be in app module. And project List and individual project are in project module.
 
+### Folder structure
+
+Now `app` folder includes home, project, review folders. And each subfolder has its service, filters. Other solution is to create a `components, services` folder.
+
 ## Issue solving
 
 1. Can't bind to 'ngModel' since it isn't a known property of 'input'
@@ -76,7 +80,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate/g [folderName/]component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 

@@ -6,7 +6,6 @@ import { formatTime } from '../../../utils/tools';
 import { getProject } from '../../../utils/api';
 
 @Component({
-  // selector: 'app-project-detail',
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss']
 })

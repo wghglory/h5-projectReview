@@ -1,7 +1,11 @@
 import { IProject } from './project';
 import { baseUrl } from './../../utils/api';
 import { Injectable } from '@angular/core';
+
+// use either one below
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Http } from '@angular/http';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
@@ -10,18 +14,23 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ProjectService {
-  constructor(private _http: HttpClient) {}
+  constructor(private _httpClient: HttpClient, private _http: Http) {}
   getProjects(): Observable<IProject[]> {
-    return this._http
-      .get<IProject[]>(`${baseUrl}/projects`)
-      .do((res) => {
-        // console.log('All: ' + JSON.stringify(res));
-      })
-      .catch(this.handleError);
+    // return this._httpClient
+    //   .get<IProject[]>(`${baseUrl}/projects`)
+    //   .do((res) => {
+    //     // console.log('All: ' + JSON.stringify(res));
+    //   })
+    //   .catch(this.handleError);
+
+    return this._http.get(`${baseUrl}/projects`).map((res) => res.json()).catch(this.handleError);
   }
 
   getProject(id): Observable<any> {
-    return this._http.get<any>(`${baseUrl}/projects/${id}`).do((res) => {}).catch(this.handleError);
+    return this._httpClient
+      .get<any>(`${baseUrl}/projects/${id}`)
+      .do((res) => {})
+      .catch(this.handleError);
   }
 
   private handleError(err: HttpErrorResponse) {

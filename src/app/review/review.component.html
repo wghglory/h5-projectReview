@@ -23,7 +23,7 @@
       <h3>该项目存在的问题</h3>
       <!-- ng-container is like template in vue.js -->
       <ng-container *ngFor="let review of reviews; let index = index;">
-        <app-review-problem-category [review]="review" [selectedReviewId]="selectedReviewId" (problemCategoryChanged)="onProblemCategoryToggle($event)"
+        <app-review-problem-category [review]="review" [selectedReviewId]=selectedReviewId (problemCategoryChanged)="onProblemCategoryToggle($event)"
           (problemsChanged)="onProblemsChange($event)"></app-review-problem-category>
       </ng-container>
     </div>
